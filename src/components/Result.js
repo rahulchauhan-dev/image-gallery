@@ -8,9 +8,7 @@ const Result = () => {
 
   let params = useParams();
 
-  const searchPhotosByQuery = async () => {
-    const keyword = params.keyword;
-
+  const searchPhotosByQuery = async (keyword) => {
     const { data } = await axios.get(
       `https://api.unsplash.com/search/photos?query=${keyword}&per_page=30&client_id=raNsmjkxf7Yd6bHGIrX_0hT8BG1RO0irvMjU6C4ng_w`
     );
@@ -18,8 +16,8 @@ const Result = () => {
   };
 
   useEffect(() => {
-    searchPhotosByQuery();
-  }, []);
+    searchPhotosByQuery(params.keyword);
+  }, [params.keyword]);
 
   return (
     <>
